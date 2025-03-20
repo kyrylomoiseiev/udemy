@@ -1,0 +1,6 @@
+:root {
+  --secondary-colordark: rgba(0, 0, 0, 1);
+/* Define global font styles */
+  --font-primary: "Inter Tight";
+  --font-secondary: "Inter Light";
+}

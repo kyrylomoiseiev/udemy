@@ -1,0 +1,43 @@
+/* ✅ Подключаем сброс стилей */
+@import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+button:focus-visible, input:focus-visible {
+  outline: 2px solid rgba(74, 144, 226, 1);
+  outline-offset: 2px;
+  transition: outline-offset 0.2s ease;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+}

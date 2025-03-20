@@ -1,0 +1,750 @@
+/* 🔹 Основной хедер */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 80px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: rgb(0, 0, 0);
+}
+/* 🔹 Логотип + навигация */
+.frame {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+/* 🔹 Логотип */
+.mask-group {
+  filter: invert(1);
+  width: 116px;
+  height: 40px;
+}
+/* 🔹 Навигация */
+.navbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.tab {
+  font-family: 'Inter Tight';
+  color: rgb(183, 183, 183);
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.tab:hover {
+  color: rgb(255, 255, 255);
+}
+/* 🔹 Контейнер иконок и поиска */
+.frame-2 {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+/* 🔹 Блок иконок */
+.header-icons {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+/* 🔹 Отдельные иконки */
+.icon img {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+/* 🔹 Контейнер поиска (изначально как обычная иконка) */
+.header-search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px; 
+  height: 40px; 
+  position: relative;
+  border-radius: 20px;
+  background: transparent;
+  transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  overflow: hidden;
+  cursor: pointer; /* Теперь курсор меняется при наведении */
+}
+
+/* 🔹 Иконка поиска */
+.search-icon {
+  width: 24px; /* Теперь 100% совпадает с остальными иконками */
+  height: 24px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: left 0.3s ease-in-out, transform 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+/* 🔹 Инпут (изначально скрыт) */
+.search-input {
+  height: 36px;
+  border: none;
+  outline: none;
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 14px;
+  color: rgb(95, 95, 95);
+  background-color: rgb(255, 255, 255);
+  opacity: 0;
+  transition: width 0.3s ease-in-out, opacity 0.3s ease-in-out, padding 0.3s ease-in-out;
+}
+
+/* 🔹 Активное состояние (поиск открыт) */
+.header-search.active {
+  width: 180px;
+  background-color: rgb(255, 255, 255);
+  padding-left: 12px;
+  padding-right: 12px;
+  border-radius: 20px;
+  margin: 0 auto;
+}
+
+.header-search.active .search-icon {
+  left: 12px; /* Лупа уезжает влево, но остаётся видимой */
+  transform: translateX(0);
+}
+
+.header-search.active .search-input {
+  width: 140px;
+  opacity: 1;
+  padding-left: 12px;
+  cursor: text; /* Чтобы при наведении на поле был курсор ввода */
+}
+
+/* 🔹 Профиль */
+.profile-in-progress {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.profile-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.profile-progress {
+  position: absolute;
+  width: 85%;
+  height: 85%;
+  z-index: 2;
+}
+
+.profile-icon {
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  z-index: 3;
+}
+
+
+
+
+/* ===== HERO SECTION ===== */
+.hero {
+  max-width: 1440px;
+  width: 100%;
+  height: 640px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  margin-top: 50px;
+  /* Тут оригинальный отстут 80 но при горизонтальном скроле видно булую полосу */
+}
+
+/*HERO BACKGROUND WITH GRADIENT OVERLAY*/
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 80px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 1) 50%, rgba(151, 71, 255, 1) 100%);
+  opacity: 0.8;
+  z-index: 1;
+}
+
+.hero-section-background-image {
+  max-width: 1440px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  box-sizing: border-box;
+}
+
+/* Маска внизу */
+.hero-background::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 114px;
+  background: url('data:image/svg+xml;utf8,<svg width="1440" height="114" viewBox="0 0 1440 114" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0L554.018 94.5779C665.857 113.67 780.13 113.591 891.942 94.3434L1440 0V114H0V0Z" fill="white"/></svg>');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  z-index: 2;
+}
+
+/* ===== HERO CONTENT ===== */
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  margin: 0 auto;
+  gap: 44px;
+}
+
+.hero-subtitle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Inter Tight";
+  font-size: 20px;
+  font-weight: 250;
+  line-height: 24px;
+  letter-spacing: 3%;
+  color: rgba(255, 255, 255, 1);
+  margin-top: 10px;
+  margin-bottom: 300px;
+}
+
+.hero-title {
+  font-family: "Inter Tight";
+  text-transform: uppercase;
+  font-size: 46px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 1);
+  line-height: 64px;
+  margin: 0 auto;
+}
+
+/* ===== SEARCH CONTAINER ===== */
+.hero-search-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 713px;
+  height: 128px;
+  gap: 24px;
+}
+
+/* ===== SEARCH BAR ===== */
+.hero-search {
+  display: flex;
+  align-items: center;
+  width: 545px;
+  height: 40px;
+  border-radius: 16px;
+  /* Убирает видимые из-за кнопки и поиска острые края  */
+  box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+.search-wrapper {
+  /* Обёртка для поисковой строки */
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 16px 0 0 16px;
+  position: relative;
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
+}
+
+.search-input {
+  width: 100%;
+  /* Теперь занимает всю ширину внутри .search-wrapper */
+  padding: 8px 16px 8px 36px;
+  /* Отступ слева, чтобы не накладываться на иконку */
+  border: none;
+  outline: none;
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 14px;
+  color: rgba(95, 95, 95, 1);
+  background: transparent;
+}
+
+.search-input::placeholder {
+  color: rgba(95, 95, 95, 1);
+}
+
+.search-button {
+  height: 40px;
+  border-radius: 0 16px 16px 0;
+  padding: 0 24px;
+  font-family: "Inter Tight";
+  font-size: 16px;
+  font-weight: 500;
+  background: radial-gradient(circle, rgba(164, 53, 240, 1) 0%, rgba(104, 0, 179, 1) 100%);
+  color: rgba(255, 255, 255, 1);
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.search-button:hover {
+  background: radial-gradient(circle, rgba(144, 33, 220, 1) 0%, rgba(85, 0, 145, 1) 100%);
+}
+
+.hero-bottom-slide-icons-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* ===== LET'S START LEARNING SECTION ===== */
+.letStartLearning {
+  width: 100%;
+  max-width: 1440px;
+  height: auto;
+  padding: 80px;
+  background: rgba(255, 255, 255, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+/* Subsection */
+.letStartLearning-filters {
+  width: 100%;
+  max-width: 1280px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Section Header Container */
+.section-header {
+  height: 128px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0;
+}
+
+/* Title */
+.letStartLearning-title {
+  font-family: 'Inter Tight', sans-serif;
+  font-weight: 800;
+  font-size: 56px;
+  line-height: 64px;
+  text-transform: uppercase;
+  width: 956px;
+  height: 128px;
+  display: flex;
+  align-items: center;
+  background:
+    linear-gradient(0deg, #000000, #000000),
+    linear-gradient(180deg, rgba(0, 108, 153, 0) 0%, rgba(164, 53, 239, 0.7) 100%);
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Subtitle */
+.letStartLearning-subtitle {
+  font-family: 'Helvetica Neue', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 20px;
+  color: rgba(64, 67, 69, 1);
+  width: 308px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  white-space: pre-line;
+  /* Разрешает перенос строк */
+  word-wrap: break-word;
+  /* Позволяет переносить слова */
+  height: 60px;
+}
+
+/* Filter Buttons */
+.all-filter-btn {
+  font-family: 'Inter Tight', sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 16px;
+  color: rgba(26, 26, 26, 1);
+  border-radius: 24px;
+  border: 1px solid transparent;
+  padding: 8px 24px;
+  background: linear-gradient(white, white) padding-box,
+    linear-gradient(to right, rgba(104, 0, 179, 1), rgba(45, 0, 77, 1)) border-box;
+  cursor: pointer;
+}
+
+.all-filter-btn:hover {
+  font-weight: 600;
+  background: rgba(104, 0, 179, 1);
+  color: rgba(255, 255, 255, 1);
+}
+
+/* Filter Buttons Container */
+.filters-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  width: 100%;
+  max-width: 1280px;
+  height: auto;
+}
+
+/* Development & Explore More */
+.section-footer {
+  width: 100%;
+  max-width: 1280px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 24px;
+}
+
+.section-footer p {
+  font-family: 'Inter Tight', sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 16px;
+  color: rgba(26, 26, 26, 1);
+}
+
+.explore-more-btn {
+  font-family: 'Inter Tight', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: rgba(45, 0, 77, 1);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.explore-more-btn svg {
+  width: 9.95px;
+  height: 18.2px;
+  fill: rgba(45, 0, 77, 1);
+}
+
+.course-section {
+  max-width: 1440px;
+  width: 100%;
+  padding: 32px;
+}
+
+/* Card container */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  /* 4 cards per row */
+  gap: 16px;
+  width: 100%;
+  height: 100%;
+}
+
+/* Individual card */
+.card {
+  width: 308;
+  height: 409;
+  border-radius: 8px;
+  border-width: 0.5px;
+  border: 0.5px solid rgba(170, 170, 170, 1);
+  background-color: rgba(245, 245, 245, 1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Card image container - works good*/
+.card-image {
+  width: 100%;
+  height: 153px;
+  position: relative;
+  display: flex;
+  background-color: rgba(245, 245, 245, 1);
+  ;
+}
+
+/* Не могу сделать полигон с плавным закруглением внизу */
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 1) 80%, rgba(0, 0, 0, 0) 100%);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 1) 80%, rgba(0, 0, 0, 0) 100%);
+}
+
+/* Псевдоэлемент для наложения SVG-маски */
+.card-image::after {
+  content: "";
+  /* Обязательно для псевдоэлемента, иначе он не отобразится */
+  position: absolute;
+  /* Абсолютное позиционирование относительно .card-image */
+  bottom: 0;
+  /* Прижимаем к нижнему краю */
+  left: 0;
+  /* Выравниваем по левому краю */
+  width: 100%;
+  /* Растягиваем на всю ширину изображения */
+  height: 24px;
+  /* Высота SVG-маски (можно изменить при необходимости) */
+
+  /* Вставляем SVG в виде background */
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 308 24'><path d='M0 0L118.498 19.9111C142.419 23.9306 166.861 23.9139 190.776 19.8618L308 0V24H0V0Z' fill='%23F5F5F5'/></svg>");
+
+  background-size: cover;
+  /* Заполняем всю область */
+  background-repeat: no-repeat;
+  /* Запрещаем повторение */
+  background-position: bottom;
+  /* Выравниваем по нижнему краю */
+
+  z-index: 2;
+  /* Размещаем над изображением */
+  pointer-events: none;
+  /* Делаем слой "прозрачным" для кликов, чтобы он не мешал взаимодействию */
+}
+
+/* Badge */
+.badge {
+  width: 84;
+  height: 24;
+  border-radius: 24px;
+  border-width: 1px;
+  padding-top: 4px;
+  /* doesn't work */
+  padding-right: 8px;
+  padding-bottom: 4px;
+  /* doesn't work */
+  padding-left: 8px;
+  background: linear-gradient(102.8deg, rgba(31, 91, 191, 0.9) -4.11%, rgba(32, 192, 223, 0.9) 110.09%);
+  border: 1px solid;
+  border-image-source: linear-gradient(94.67deg, rgba(48, 108, 191, 0.6) 0%, rgba(255, 255, 255, 0.6) 100%);
+  /* make transition of gradient from left to right */
+  font-family: Inter Tight;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0%;
+  color: rgba(255, 255, 255, 1);
+
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Card content */
+.card-content {
+  width: 100%
+    /* 308px */
+  ;
+  height: 256px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-sizing: border-box;
+}
+
+/* Title and subtitle */
+.card-title {
+  font-family: "Inter Tight";
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0%;
+  color: rgba(26, 26, 26, 1);
+}
+
+.card-subtitle {
+  font-family: "Inter Tight";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0%;
+  color: rgba(50, 50, 50, 1);
+
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  /* Максимум 2 строки */
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Author */
+.card-author {
+  font-family: "Helvetica Neue", "Inter";
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0%;
+  color: rgba(163, 163, 163, 1);
+}
+
+/* Tags */
+.card-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.card-tag {
+  font-family: "Inter Tight";
+  /* Не могу сделать чтоб совпадал шрифт с макетом */
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0%;
+  background: rgba(245, 245, 245, 1);
+  padding: 4px 8px;
+  border: 1px solid rgba(44, 47, 49, 1);
+  border-radius: 24px;
+}
+
+/* Price */
+.card-price {
+  width: 276px;
+  height: 32px;
+  font-family: "Inter Tight", sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 32px;
+  color: rgba(26, 26, 26, 1);
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  padding-left: 8px;
+  border-radius: 4px;
+}
+
+.training-section {
+  margin: 0 auto;
+  width: 100vw;
+  height: 615px;
+  padding: 120px 80px;
+  background: linear-gradient(0deg, #010101, #010101),
+              linear-gradient(180deg, rgba(151, 71, 255, 0.31) 0%, rgba(0, 0, 0, 0) 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden; /* Убираем возможный выход элементов за границы */
+}
+
+.mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+}
+
+.content {
+  width: 729px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 40px;
+}
+
+.title {
+  font-family: "Inter Tight", sans-serif;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 64px;
+  text-transform: uppercase;
+  color: white;
+}
+
+.subtitle {
+  font-family: "Helvetica Neue", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: rgb(209, 209, 209);
+}
+
+.button {
+  width: auto;
+  height: 40px;
+  border-radius: 10px;
+  padding: 8px 24px;
+  background: radial-gradient(50% 129.43% at 50% 50%, #A435F0 0%, #6800B3 100%);
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.training-section-img {
+  width: 583px;
+  height: 315px;
+  position: absolute;
+  bottom: 120px; /* Учитываем нижний padding */
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.training-section-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
